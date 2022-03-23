@@ -20,6 +20,7 @@ module.exports = async () => {
       price: 50.99,
       stock: 10,
       slug: "rafflesia-arnoldii",
+      categoryId: 1,
     },
   ]);
 
