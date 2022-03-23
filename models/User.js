@@ -32,15 +32,16 @@ module.exports = (sequelize, Model, DataTypes) => {
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
       },
       phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
     },
     {
       sequelize,
       modelName: "users",
+      paranoid: true,
     },
   );
 

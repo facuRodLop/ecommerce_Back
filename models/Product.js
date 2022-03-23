@@ -12,19 +12,20 @@ module.exports = (sequelize, Model, DataTypes) => {
         type: DataTypes.STRING,
       },
       description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       picture: {
         type: DataTypes.STRING,
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DECIMAL,
       },
       stock: {
         type: DataTypes.INTEGER,
       },
       isStandout: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       slug: {
         type: DataTypes.STRING,

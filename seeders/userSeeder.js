@@ -12,6 +12,7 @@ module.exports = async () => {
     city: faker.address.city(),
     address: faker.address.streetAddress(),
     isAdmin: true,
+    phone: faker.phone.phoneNumber(),
   });
   for (let i = 0; i < 50; i++) {
     const firstname = faker.name.firstName();
@@ -24,6 +25,7 @@ module.exports = async () => {
       city: faker.address.city(),
       address: faker.address.streetAddress(),
       isAdmin: false,
+      phone: faker.phone.phoneNumber(),
     };
     await User.create(user);
   }

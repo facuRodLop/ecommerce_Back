@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 routes(app);
 
 // dbInitialSetup(); // Crea tablas e inserta datos de prueba.
