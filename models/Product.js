@@ -1,7 +1,7 @@
 module.exports = (sequelize, Model, DataTypes) => {
   class Product extends Model {}
 
-  User.init(
+  Product.init(
     {
       id: {
         type: DataTypes.BIGINT.UNSIGNED,
@@ -18,10 +18,10 @@ module.exports = (sequelize, Model, DataTypes) => {
         type: DataTypes.STRING,
       },
       price: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
       },
       stock: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
       },
       isStandout: {
         type: DataTypes.BOOLEAN,
@@ -32,8 +32,8 @@ module.exports = (sequelize, Model, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "product",
-    }
+      modelName: "products",
+    },
   );
 
   return Product;

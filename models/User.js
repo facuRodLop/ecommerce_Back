@@ -10,14 +10,21 @@ module.exports = (sequelize, Model, DataTypes) => {
       },
       firstname: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       lastname: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      city: {
         type: DataTypes.STRING,
       },
       address: {
@@ -25,15 +32,16 @@ module.exports = (sequelize, Model, DataTypes) => {
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,
+        allowNull: false,
       },
       phone: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
       },
     },
     {
       sequelize,
-      modelName: "user",
-    }
+      modelName: "users",
+    },
   );
 
   return User;
