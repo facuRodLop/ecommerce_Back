@@ -8,6 +8,7 @@ productRouter.get("/products/:id", productController.show);
 productRouter.post("/products", productController.store);
 
 productRouter.patch("/products/:id", productController.update);
+productRouter.patch("/products/:id/sell", productController.sell);
 
 productRouter.delete("/products/:id", productController.destroy);
 // ...

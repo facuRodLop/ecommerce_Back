@@ -27,7 +27,8 @@ async function update(req, res) {
 }
 
 async function sell(req, res) {
-  await Product.update({ stock: req.body.amount }, { where: { id: req.body.id } });
+  await Product.update({ stock: req.body.amount }, { where: { id: req.params.id } });
+  res.status(202).json({ message: "The Product was successfully sold" });
 }
 
 // Remove the specified resource from storage.

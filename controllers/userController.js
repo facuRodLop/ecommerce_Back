@@ -15,7 +15,7 @@ async function show(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  await User.create(req.body);
+  await User.create({ ...req.body, isAdmin: false });
   res.status(201).json({ message: "The User was successfully created" });
 }
 
