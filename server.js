@@ -8,12 +8,11 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
 
 routes(app);
 
 dbInitialSetup(); // Crea tablas e inserta datos de prueba.
 
 app.listen(APP_PORT, () =>
-  console.log(`\n[Express] Servidor corriendo en el puerto ${APP_PORT}!\n`)
+  console.log(`\n[Express] Servidor corriendo en el puerto ${APP_PORT}!\n`),
 );

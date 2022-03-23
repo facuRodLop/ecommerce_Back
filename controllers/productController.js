@@ -1,8 +1,8 @@
-const { Article } = require("../models");
+const { Product } = require("../models");
 
 async function showHome(req, res) {
-  const articles = await Article.findAll();
-  res.render("home", { articles });
+  const products = await Product.findAll({ nested: true });
+  res.json(products);
 }
 
 async function showContact(req, res) {
