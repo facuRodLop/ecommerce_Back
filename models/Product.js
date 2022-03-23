@@ -1,5 +1,5 @@
 module.exports = (sequelize, Model, DataTypes) => {
-  class User extends Model {}
+  class Product extends Model {}
 
   User.init(
     {
@@ -8,33 +8,33 @@ module.exports = (sequelize, Model, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      firstname: {
+      name: {
         type: DataTypes.STRING,
       },
-      lastname: {
+      description: {
         type: DataTypes.STRING,
       },
-      email: {
+      picture: {
         type: DataTypes.STRING,
       },
-      password: {
-        type: DataTypes.STRING,
+      price: {
+        type: DataTypes.INT,
       },
-      address: {
-        type: DataTypes.STRING,
+      stock: {
+        type: DataTypes.INT,
       },
-      isAdmin: {
+      isStandout: {
         type: DataTypes.BOOLEAN,
       },
-      phone: {
-        type: DataTypes.INT,
+      slug: {
+        type: DataTypes.STRING,
       },
     },
     {
       sequelize,
-      modelName: "user",
+      modelName: "product",
     }
   );
 
-  return User;
+  return Product;
 };
