@@ -21,12 +21,12 @@ const Order = require("./Order")(sequelize, Model, DataTypes);
 
 User.hasMany(Order);
 Category.hasMany(Product);
-Product.hasMany(Order);
+// Product.hasMany(Order);
 Product.belongsTo(Category);
-Product.belongsTo(Order);
-Order.hasMany(Product);
+// Product.belongsTo(Order);
+// Order.hasMany(Product);
 Order.belongsTo(User);
-Order.belongsTo(Product);
+// Order.belongsTo(Product);
 
 module.exports = {
   sequelize,
