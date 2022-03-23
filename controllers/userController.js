@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const jwt = require("jsonwebtoken");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -35,10 +36,50 @@ async function destroy(req, res) {
   res.status(200).json({ message: "The User was deleted successfully" });
 }
 
+// Login & logout con jsonwebtoken
+async function getToken(req, res) {
+  try {
+    const user = await User.findAll({
+      where: { email: req.body.email },
+    });
+    console.log(user);
+    if (user && (await user.validPassword(req.body.password))) {
+      const token = jwt.sign({ sub: user.id }, process.env.ACCESS_TOKEN_SECRET);
+
+      await User.update({ token: token }, { where: { id: user.id } });
+      res.status(200).json({
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        token: token,
+      });
+    } else {
+      res.status(401).json({ message: "Something went wrong." });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+}
+
+async function deleteToken(req, res) {
+  try {
+    const tokenBearer = req.headers.authorization.split(" ");
+    token = tokenBearer[1];
+
+    await User.update({ token: null }, { where: { id: req.user.sub } });
+
+    res.status(200).json({ message: "logout ok" });
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+}
+
 module.exports = {
   index,
   show,
   store,
   update,
   destroy,
+  getToken,
+  deleteToken,
 };

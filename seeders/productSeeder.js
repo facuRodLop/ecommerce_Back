@@ -22,6 +22,16 @@ module.exports = async () => {
       slug: "rafflesia-arnoldii",
       categoryId: 1,
     },
+    {
+      name: "Dionaea Muscipula",
+      description:
+        "The Venus flytrap is a carnivorous plant native to subtropical wetlands on the East Coast of the United States. It catches its prey with a trapping structure formed by the terminal portion of each of the plant's leaves, which is triggered by tiny hairs on their inner surfaces.",
+      picture: "",
+      price: "99",
+      stock: 5,
+      slug: "dionaea-muscipula",
+      categoryId: 1,
+    },
   ]);
 
   console.log("[Database] Se corrió el seeder de Products.");

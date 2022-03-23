@@ -37,6 +37,9 @@ module.exports = (sequelize, Model, DataTypes) => {
       phone: {
         type: DataTypes.STRING,
       },
+      token: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,

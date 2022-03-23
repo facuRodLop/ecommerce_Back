@@ -11,6 +11,11 @@ userRouter.post("/users", userController.store);
 userRouter.patch("/users/:id", userController.update);
 
 userRouter.delete("/users/:id", userController.destroy);
+
+// Login & logout (token de acceso)
+userRouter.post("/users/login", userController.getToken);
+userRouter.post("/users/logout", userController.deleteToken);
+
 //...
 
 module.exports = userRouter;
