@@ -8,12 +8,11 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST, // Ej: 127.0.0.1
     dialect: process.env.DB_CONNECTION, // Ej: mysql
     logging: false, // Para que no aparezcan mensajes en consola.
-  },
+  }
 );
 
 const User = require("./User")(sequelize, Model, DataTypes);
-const Comment = require("./Comment")(sequelize, Model, DataTypes);
-const Article = require("./Article")(sequelize, Model, DataTypes);
+const Product = require("./Product")(sequelize, Model, DataTypes);
 
 // Luego de definir los modelos, se pueden establecer relaciones
 // entre los mismos...
@@ -21,6 +20,5 @@ const Article = require("./Article")(sequelize, Model, DataTypes);
 module.exports = {
   sequelize,
   User,
-  Comment,
-  Article,
+  Product,
 };
