@@ -15,7 +15,7 @@ module.exports = async () => {
     {
       name: "Rafflesia Arnoldii",
       description:
-        "Las flores pueden alcanzar hasta casi un metro de diámetro son unas de las flores mas grandes del mundo y pueden llegar a pesar hasta 11 kilogramos. Se trata de flores carnosas de color rojizo o anaranjado y de cinco lóbulos que permanecen abiertas entre cinco y siete días. Como ocurre con otras plantas con floraciones de gran tamaño, éstas solo se dan cada varios años.",
+        "Also known as the corpse flower, it can reach up to one meter in diameter and weigh up to 11 kilograms, making it one of the largest flowers in the world. It has a reddish or orange color, and it's one of the three national flowers of Indonesia along with the white jasmine and moon orchid.",
       picture:
         "https://www.harvardmagazine.com/sites/default/files/img/article/0217/ma17_page_060_image_0001sm-1.jpg",
       price: 50.99,
