@@ -24,12 +24,12 @@ module.exports = (sequelize, Model, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      city: {
-        type: DataTypes.STRING,
-      },
-      address: {
-        type: DataTypes.STRING,
-      },
+      // city: {
+      //   type: DataTypes.STRING,
+      // },
+      // address: {
+      //   type: DataTypes.STRING,
+      // },
       isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

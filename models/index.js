@@ -13,6 +13,7 @@ const sequelize = new Sequelize(
 
 const User = require("./User")(sequelize, Model, DataTypes);
 const Product = require("./Product")(sequelize, Model, DataTypes);
+const Address = require("./Address")(sequelize, Model, DataTypes);
 const Category = require("./Category")(sequelize, Model, DataTypes);
 const Order = require("./Order")(sequelize, Model, DataTypes);
 
@@ -21,11 +22,13 @@ const Order = require("./Order")(sequelize, Model, DataTypes);
 
 User.hasMany(Order);
 Order.belongsTo(User);
+User.hasMany(Address);
+Address.belongsTo(User);
 Category.hasMany(Product);
 Product.belongsTo(Category);
 
-Product.belongsToMany(Order, { through: "ProductOrders" });
-Order.belongsToMany(Product, { through: "ProductOrders" });
+// Product.belongsToMany(Order, { through: "ProductOrders" });
+// Order.belongsToMany(Product, { through: "ProductOrders" });
 
 module.exports = {
   sequelize,
@@ -33,4 +36,5 @@ module.exports = {
   Product,
   Category,
   Order,
+  Address,
 };
