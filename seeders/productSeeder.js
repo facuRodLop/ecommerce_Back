@@ -5,9 +5,10 @@ const { Product } = require("../models");
 //   name: "",
 //   description: "",
 //   picture: "",
-//   price: 1,
+//   price: "",
 //   stock: 2,
 //   slug: "",
+//   categoryId: 1,
 // },
 
 module.exports = async () => {
@@ -18,7 +19,7 @@ module.exports = async () => {
         "Also known as the corpse flower, it can reach up to one meter in diameter and weigh up to 11 kilograms, making it one of the largest flowers in the world. It has a reddish or orange color, and it's one of the three national flowers of Indonesia along with the white jasmine and moon orchid.",
       picture:
         "https://www.harvardmagazine.com/sites/default/files/img/article/0217/ma17_page_060_image_0001sm-1.jpg",
-      price: 50.99,
+      price: "50.99",
       stock: 10,
       slug: "rafflesia-arnoldii",
       categoryId: 1,
@@ -54,6 +55,48 @@ module.exports = async () => {
       stock: 5,
       slug: "nepenthes-albomarginata",
       categoryId: 1,
+    },
+    {
+      name: "Lithops Salicola",
+      description:
+        "This species can be found in Namibia and South Africa at an altitude of 1,000 metres to 1,350 metres. It is generally found in well-drained soil or in rock crevices. It occurs in an area of summer rainfall.",
+      picture: "https://live.staticflickr.com/5700/21523143718_e36aca8160_b.jpg",
+      price: "5.99",
+      stock: 80,
+      slug: "lithops-salicola",
+      categoryId: 3,
+    },
+    {
+      name: "Antirrhinum majus",
+      description:
+        "Commonly named 'snapdragon' because of the flowers' reaction to having their throats squeezed, which causes the 'mouth' of the flower to snap open like a dragon's mouth.",
+      picture:
+        "https://s3.amazonaws.com/eit-planttoolbox-prod/media/images/Antirrhinum-majus-1--lezumbalaberenjena--CC-BY-NC-ND.jpg",
+      price: "2.99",
+      stock: 100,
+      slug: "antirrhinum-majus",
+      categoryId: 2,
+    },
+    {
+      name: "Actaea Pachypoda",
+      description:
+        "The white baneberry or doll's-eyes, is native to eastern North America, in eastern Canada, and the Midwestern and Eastern United States. It prefers clay to coarse loamy upland soils, and is found in hardwood and mixed forest stands.",
+      picture: "https://www.heritageflowerfarm.com/wp-content/uploads/2018/04/actaea-alba2.jpg",
+      price: "5.99",
+      stock: 20,
+      slug: "actaea-pachypoda",
+      categoryId: 2,
+    },
+    {
+      name: "Orchis Italica",
+      description:
+        "The naked man orchid or the Italian orchid, is a species of orchid native to the Mediterranean Basin.  It gets its common name from the lobed lip of each flower which mimics the general shape of a naked man. It prefers partial shade and low nutrient soil, and flowers in April.",
+      picture:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Orchis_italica_047.JPG/1200px-Orchis_italica_047.JPG",
+      price: "19.99",
+      stock: 10,
+      slug: "orchis-italica",
+      categoryId: 2,
     },
   ]);
 

@@ -11,11 +11,25 @@ const { Category } = require("../models");
 module.exports = async () => {
   await Category.bulkCreate([
     {
-      name: "Rainforest",
+      name: "Carnivorous",
       description:
-        "Rainforest plants live in a warm humid environment that allows an enormous variation rare in more temperate climates.",
+        "Carnivorous plants are plants that derive some or most of their nutrients from trapping and consuming animals or protozoans, typically insects and other arthropods.",
       picture: "",
-      slug: "rainforest",
+      slug: "carnivorous",
+    },
+    {
+      name: "Orchids",
+      description:
+        "Orchids are a diverse and widespread family of flowering plants, with blooms that are often colourful and fragrant.",
+      picture: "",
+      slug: "orchids",
+    },
+    {
+      name: "Succulents",
+      description:
+        "Succulents are plants with parts that are thickened, fleshy, and engorged, usually to retain water in arid climates or soil conditions.",
+      picture: "",
+      slug: "succulents",
     },
   ]);
 
