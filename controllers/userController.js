@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -38,12 +39,12 @@ async function destroy(req, res) {
 
 // Login & logout con jsonwebtoken
 async function getToken(req, res) {
+  const { email, password } = req.body;
   try {
-    const user = await User.findAll({
-      where: { email: req.body.email },
+    const user = await User.findOne({
+      where: { email: email },
     });
-    console.log(user);
-    if (user && (await user.validPassword(req.body.password))) {
+    if (user && (await user.validatePassword(password))) {
       const token = jwt.sign({ sub: user.id }, process.env.ACCESS_TOKEN_SECRET);
 
       await User.update({ token: token }, { where: { id: user.id } });
@@ -54,10 +55,10 @@ async function getToken(req, res) {
         token: token,
       });
     } else {
-      res.status(401).json({ message: "Something went wrong." });
+      res.status(401).json({ message: "Something went wrong" });
     }
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -68,9 +69,9 @@ async function deleteToken(req, res) {
 
     await User.update({ token: null }, { where: { id: req.user.sub } });
 
-    res.status(200).json({ message: "logout ok" });
+    res.status(200).json({ message: "Successfully logout" });
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ message: error.message });
   }
 }
 

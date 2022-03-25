@@ -26,8 +26,11 @@ async function update(req, res) {
   });
 }
 
-async function sell(req, res) {
-  await Product.update({ stock: req.body.amount }, { where: { id: req.params.id } });
+async function sold(req, res) {
+  const { quantitySold } = req.body;
+  const { stock } = sdf;
+  const remainder = stock - quantitySold;
+  await Product.update({ stock: amount }, { where: { id: req.params.id } });
   res.status(202).json({ message: "The Product was successfully sold" });
 }
 
@@ -42,6 +45,6 @@ module.exports = {
   show,
   store,
   update,
-  sell,
+  sold,
   destroy,
 };
