@@ -67,7 +67,7 @@ module.exports = async () => {
       categoryId: 3,
     },
     {
-      name: "Antirrhinum majus",
+      name: "Antirrhinum Majus",
       description:
         "Commonly named 'snapdragon' because of the flowers' reaction to having their throats squeezed, which causes the 'mouth' of the flower to snap open like a dragon's mouth.",
       picture:
