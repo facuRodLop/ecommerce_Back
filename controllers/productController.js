@@ -33,7 +33,7 @@ async function store(req, res) {
 // Update the specified resource in storage.
 async function update(req, res) {
   try {
-    await Product.update(req.body, { where: { id: req.params.id } });
+    await Product.update(req.body, { where: { slug: req.params.id } });
     res.status(206).json({
       message: "The Product was successfully updated",
     });
@@ -48,7 +48,7 @@ async function sold(req, res) {
     const { quantitySold } = req.body;
     const { stock } = sdf;
     const remainder = stock - quantitySold;
-    await Product.update({ stock: amount }, { where: { id: req.params.id } });
+    await Product.update({ stock: amount }, { where: { slug: req.params.id } });
     res.status(202).json({ message: "The Product was successfully sold" });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -58,8 +58,8 @@ async function sold(req, res) {
 // Remove the specified resource from storage.
 async function destroy(req, res) {
   try {
-    await User.destroy({ where: { id: req.params.id } });
-    res.status(200).json({ message: "The User was deleted successfully" });
+    await Product.destroy({ where: { slug: req.params.id } });
+    res.status(200).json({ message: "The Product was deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
