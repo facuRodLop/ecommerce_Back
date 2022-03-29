@@ -14,7 +14,7 @@ userRouter.delete("/users/:id", userController.destroy);
 
 // Login & logout (token de acceso)
 userRouter.post("/users/login", userController.getToken);
-userRouter.post("/users/logout", userController.deleteToken);
+// userRouter.post("/users/logout", userController.deleteToken);
 
 //...
 

@@ -66,7 +66,7 @@ async function getToken(req, res) {
     if (user && (await user.validatePassword(password))) {
       const token = jwt.sign({ sub: user.id }, process.env.ACCESS_TOKEN_SECRET);
 
-      await User.update({ token: token }, { where: { id: user.id } });
+      // await User.update({ token: token }, { where: { id: user.id } });
       res.status(200).json({
         id: user.id,
         firstname: user.firstname,
@@ -81,18 +81,21 @@ async function getToken(req, res) {
   }
 }
 
-async function deleteToken(req, res) {
-  try {
-    const tokenBearer = req.headers.authorization.split(" ");
-    token = tokenBearer[1];
+// async function deleteToken(req, res) {
+//   console.log(req.user);
+//   try {
+//     const tokenBearer = req.headers.authorization.split(" ");
+//     token = tokenBearer[1];
 
-    await User.update({ token: null }, { where: { id: req.user.sub } });
+//     console.log(req.user.sub);
 
-    res.status(200).json({ message: "Successfully logout" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-}
+//     await User.update({ token: null }, { where: { id: req.user.sub } });
+
+//     res.status(200).json({ message: "Successfully logged out" });
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// }
 
 module.exports = {
   index,
@@ -101,5 +104,5 @@ module.exports = {
   update,
   destroy,
   getToken,
-  deleteToken,
+  // deleteToken,
 };
