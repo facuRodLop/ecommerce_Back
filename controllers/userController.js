@@ -1,6 +1,5 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -8,7 +7,7 @@ async function index(req, res) {
     const users = await User.findAll({ nested: true });
     res.status(202).json(users);
   } catch (error) {
-    res.status(400).json({ message: "Something went wrong" });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -19,7 +18,7 @@ async function show(req, res) {
     const user = await User.findByPk(id);
     res.status(202).json(user);
   } catch (error) {
-    res.status(400).json({ message: "Something went wrong" });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -29,7 +28,7 @@ async function store(req, res) {
     await User.create({ ...req.body, isAdmin: false });
     res.status(201).json({ message: "The User was successfully created" });
   } catch (error) {
-    res.status(400).json({ message: "Something went wrong" });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -42,7 +41,7 @@ async function update(req, res) {
       message: "The User was successfully updated",
     });
   } catch (error) {
-    res.status(400).json({ message: "Something went wrong" });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -53,7 +52,7 @@ async function destroy(req, res) {
     await User.destroy({ where: { id: id } });
     res.status(200).json({ message: "The User was deleted successfully" });
   } catch (error) {
-    res.status(400).json({ message: "Something went wrong" });
+    res.status(400).json({ message: error.message });
   }
 }
 
@@ -75,7 +74,7 @@ async function getToken(req, res) {
         token: token,
       });
     } else {
-      res.status(401).json({ message: "Something went wrong" });
+      res.status(401).json({ message: error.message });
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
