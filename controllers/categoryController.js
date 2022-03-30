@@ -1,4 +1,4 @@
-const { Category } = require("../models");
+const { Category, User } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -25,11 +25,17 @@ async function show(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  try {
-    await Category.create(req.body);
-    res.status(201).json({ message: "The Category was successfully created" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Category.create(req.body);
+      res.status(201).json({ message: "The Category was successfully created" });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
@@ -38,24 +44,36 @@ async function store(req, res) {
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  try {
-    await Category.update(req.body, { where: { slug: req.params.id } });
-    res.status(206).json({
-      message: "The Category was successfully updated",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Category.update(req.body, { where: { slug: req.params.id } });
+      res.status(206).json({
+        message: "The Category was successfully updated",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  try {
-    await Category.destroy({ where: { slug: req.params.id } });
-    res.status(200).json({ message: "The Category was deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Category.destroy({ where: { slug: req.params.id } });
+      res.status(200).json({ message: "The Category was deleted successfully" });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
