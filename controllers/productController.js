@@ -57,6 +57,7 @@ async function sold(req, res) {
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
+  console.log(req.user);
   try {
     await Product.destroy({ where: { slug: req.params.id } });
     res.status(200).json({ message: "The Product was deleted successfully" });
