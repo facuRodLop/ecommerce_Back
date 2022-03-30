@@ -1,4 +1,4 @@
-const { Product } = require("../models");
+const { User, Product } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -22,24 +22,36 @@ async function show(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  try {
-    await Product.create(req.body);
-    res.status(201).json({ message: "The Product was successfully created" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Product.create(req.body);
+      res.status(201).json({ message: "The Product was successfully created" });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  try {
-    await Product.update(req.body, { where: { slug: req.params.id } });
-    res.status(206).json({
-      message: "The Product was successfully updated",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Product.update(req.body, { where: { slug: req.params.id } });
+      res.status(206).json({
+        message: "The Product was successfully updated",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
@@ -57,12 +69,17 @@ async function sold(req, res) {
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {
-  console.log(req.user);
-  try {
-    await Product.destroy({ where: { slug: req.params.id } });
-    res.status(200).json({ message: "The Product was deleted successfully" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    try {
+      await Product.destroy({ where: { slug: req.params.id } });
+      res.status(200).json({ message: "The Product was deleted successfully" });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
   }
 }
 
