@@ -113,6 +113,30 @@ async function getToken(req, res) {
   }
 }
 
+// Login (ADMIN SITE)
+async function getAdminToken(req, res) {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({
+      where: { email: email },
+    });
+    if (user.isAdmin && (await user.validatePassword(password))) {
+      const token = jwt.sign({ sub: user.id }, process.env.ACCESS_TOKEN_SECRET);
+
+      res.status(200).json({
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        token: token,
+      });
+    } else {
+      res.status(401).json({ message: error.message });
+    }
+  } catch (error) {
+    res.status(400).json({ message: "Something went wrong with your request" });
+  }
+}
+
 module.exports = {
   index,
   show,
@@ -120,4 +144,5 @@ module.exports = {
   update,
   destroy,
   getToken,
+  getAdminToken,
 };

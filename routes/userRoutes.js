@@ -10,6 +10,9 @@ userRouter.post("/", userController.store);
 userRouter.post("/login", userController.getToken);
 // userRouter.post("/users/logout", userController.deleteToken);
 
+// Login para el admin site:
+userRouter.post("/adminlogin", userController.getAdminToken);
+
 // Token validator:
 userRouter.use(checkJwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms: ["HS256"] }));
 
