@@ -49,9 +49,18 @@ async function update(req, res) {
   const user = await User.findOne({ where: { id: req.user.sub } });
   const { id } = req.params;
 
-  if (user.isAdmin || Number(id) === req.user.sub) {
+  if (user.isAdmin) {
     try {
       await User.update(req.body, { where: { id: id } });
+      res.status(206).json({
+        message: "The User was successfully updated",
+      });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  } else if (!user.isAdmin && Number(id) === req.user.sub) {
+    try {
+      await User.update({ ...req.body, isAdmin: false }, { where: { id: id } });
       res.status(206).json({
         message: "The User was successfully updated",
       });
