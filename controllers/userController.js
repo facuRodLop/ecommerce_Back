@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -51,7 +52,19 @@ async function update(req, res) {
 
   if (user.isAdmin) {
     try {
-      await User.update(req.body, { where: { id: id } });
+      const newPassword = await bcrypt.hash(req.body.password, 10);
+      await User.update(
+        {
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          password: newPassword,
+          city: req.body.city,
+          address: req.body.address,
+          phone: req.body.phone,
+        },
+        { where: { id: id } },
+      );
       res.status(206).json({
         message: "The User was successfully updated",
       });
