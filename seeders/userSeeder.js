@@ -5,16 +5,16 @@ faker.locale = "es";
 
 module.exports = async () => {
   await User.create({
-    firstname: "Pepito",
-    lastname: "Prueba",
-    email: "a@a.com",
-    password: "1",
+    firstname: "Admin",
+    lastname: "Admin",
+    email: "admin@admin.com",
+    password: "admin",
     city: faker.address.city(),
     address: faker.address.streetAddress(),
     isAdmin: true,
     phone: faker.phone.phoneNumber(),
   });
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 10; i++) {
     const firstname = faker.name.firstName();
     const lastname = faker.name.lastName();
     const user = {
