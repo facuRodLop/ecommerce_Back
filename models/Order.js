@@ -8,11 +8,21 @@ module.exports = (sequelize, Model, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
+      products: {
+        type: DataTypes.JSON,
+        allowNull: false,
+      },
       paymentType: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       finalPrice: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+      },
+      shippingAddress: {
+        type: DataTypes.JSON,
+        allowNull: false,
       },
       status: {
         type: DataTypes.TEXT,

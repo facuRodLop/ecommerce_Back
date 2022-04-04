@@ -39,7 +39,7 @@ async function show(req, res) {
 async function store(req, res) {
   try {
     await User.create({ ...req.body, isAdmin: false });
-    res.status(201).json({ message: "The User was successfully created" });
+    res.status(201).json({ message: "The user was successfully created" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -66,7 +66,7 @@ async function update(req, res) {
         { where: { id: id } },
       );
       res.status(206).json({
-        message: "The User was successfully updated",
+        message: "The user was successfully updated",
       });
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -75,7 +75,7 @@ async function update(req, res) {
     try {
       await User.update({ ...req.body, isAdmin: false }, { where: { id: id } });
       res.status(206).json({
-        message: "The User was successfully updated",
+        message: "The user was successfully updated",
       });
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -90,7 +90,10 @@ async function destroy(req, res) {
   const user = await User.findOne({ where: { id: req.user.sub } });
   const { id } = req.params;
 
-  if (user.isAdmin || Number(id) === req.user.sub) {
+  if (
+    (user.isAdmin && Number(id) !== req.user.sub) ||
+    (!user.isAdmin && Number(id) === req.user.sub)
+  ) {
     try {
       await User.destroy({ where: { id: id } });
       res.status(200).json({ message: "The User was deleted successfully" });
@@ -98,7 +101,7 @@ async function destroy(req, res) {
       res.status(400).json({ message: error.message });
     }
   } else {
-    res.status(401).json({ message: "Unauthorized" });
+    res.status(423).json({ message: "This action is locked" });
   }
 }
 
