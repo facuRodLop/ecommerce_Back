@@ -16,9 +16,16 @@ module.exports = (sequelize, Model, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      finalPrice: {
+      subtotal: {
         type: DataTypes.DOUBLE,
         allowNull: false,
+      },
+      shipping: {
+        type: DataTypes.DOUBLE,
+      },
+      total: {
+        type: DataTypes.DOUBLE,
+        allowNul: false,
       },
       shippingAddress: {
         type: DataTypes.JSON,

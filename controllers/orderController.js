@@ -6,7 +6,7 @@ async function index(req, res) {
 
   if (user.isAdmin) {
     try {
-      const orders = await Order.findAll({ nested: true });
+      const orders = await User.findAll({ nested: true });
       res.status(202).json(orders);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -41,7 +41,8 @@ async function store(req, res) {
       id: products.map((product) => product.id),
     },
   });
-  let finalPrice = 0;
+  let subtotal = 0;
+  let shipping = 0;
   const productsInOrder = [];
   for (const item of items) {
     for (const product of products) {
@@ -51,15 +52,21 @@ async function store(req, res) {
           unit_price: item.price,
           quantity: product.quantity,
         });
-        finalPrice = finalPrice + Number(product.quantity) * Number(item.price);
+        subtotal = subtotal + Number(product.quantity) * Number(item.price);
       }
     }
   }
+  if (subtotal > 200) {
+    shipping = subtotal * 0.1;
+  }
+  const total = shipping + subtotal;
 
   await Order.create({
     products: productsInOrder,
     paymentType: paymentType,
-    finalPrice: finalPrice,
+    subtotal: subtotal,
+    shipping: shipping,
+    total: total,
     status: status,
     userId: req.user.sub,
     shippingAddress: shippingAddress,
