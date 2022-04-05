@@ -13,6 +13,9 @@ productRouter.use(checkJwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms
 // Private product routes:
 productRouter.post("/", productController.store);
 
+//store files with formidable
+productRouter.post("/images", productController.storeFile);
+
 productRouter.patch("/:id", productController.update);
 productRouter.patch("/:id/sold", productController.sold);
 
