@@ -14,13 +14,13 @@ const { Product } = require("../models");
 module.exports = async () => {
   await Product.bulkCreate([
     {
-      name: "Rafflesia Arnoldii",
+      name: "Sarracenia Purpurea",
       description:
-        "Also known as the corpse flower, it can reach up to one meter in diameter and weigh up to 11 kilograms, making it one of the largest flowers in the world. It has a reddish or orange color, and it's one of the three national flowers of Indonesia along with the white jasmine and moon orchid.",
-      picture: "rafflesia-arnoldii.jpg",
-      price: 50.99,
+        "Also known as the purple pitcher plant, its range includes the Eastern seaboard, the Great Lakes region, all of Canada (except Nunavut and Yukon), Washington state, and Alaska. It obtains most of its nutrients through prey capture, who fall into the pitcher and drown in the rainwater that collects in the base of each leaf.",
+      picture: "sarracenia-purpurea-alt.jpeg",
+      price: 20.99,
       stock: 10,
-      slug: "rafflesia-arnoldii",
+      slug: "sarracenia-purpurea",
       categoryId: 1,
     },
     {
@@ -37,7 +37,7 @@ module.exports = async () => {
       name: "Drosera Aliciae",
       description:
         "The Alice sundew is a carnivorous plant native to the Cape Provinces of South Africa, and is one of the most common sundews in cultivation. The plant is relatively easy to grow and recommended for begginers.",
-      picture: "drosera-aliciae.jpg",
+      picture: "drosera-aliciae-alt.jpg",
       price: 14.99,
       stock: 15,
       slug: "drosera-aliciae",
@@ -47,7 +47,7 @@ module.exports = async () => {
       name: "Nepenthes Albomarginata",
       description:
         "Nepenthes albomarginata is a tropical pitcher plant native to Borneo, Peninsular Malaysia, and Sumatra. In its natural habitat, the plant uses its trichomes as bait to lure termites into the pitchers.",
-      picture: "nepenthes-albomarginata.jpg",
+      picture: "nepenthes-albomarginata-alt.jpg",
       price: 99.99,
       stock: 5,
       slug: "nepenthes-albomarginata",
@@ -67,7 +67,7 @@ module.exports = async () => {
       name: "Antirrhinum Majus",
       description:
         "Commonly named 'snapdragon' because of the flowers' reaction to having their throats squeezed, which causes the 'mouth' of the flower to snap open like a dragon's mouth.",
-      picture: "antirrhinum-majus.jpg",
+      picture: "antirrhinum-majus-alt.jpg",
       price: 2.99,
       stock: 100,
       slug: "antirrhinum-majus",
