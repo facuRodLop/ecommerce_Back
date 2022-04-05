@@ -6,7 +6,7 @@ async function index(req, res) {
 
   if (user.isAdmin) {
     try {
-      const orders = await User.findAll({ nested: true });
+      const orders = await Order.findAll({ nested: true });
       res.status(202).json(orders);
     } catch (error) {
       res.status(400).json({ message: error.message });

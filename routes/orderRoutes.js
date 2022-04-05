@@ -7,7 +7,7 @@ const checkJwt = require("express-jwt");
 orderRouter.use(checkJwt({ secret: process.env.ACCESS_TOKEN_SECRET, algorithms: ["HS256"] }));
 orderRouter.post("/", orderController.store);
 
-// orderRouter.get("/", orderController.index);
+orderRouter.get("/", orderController.index);
 
 // orderRouter.get("/:id", orderController.show);
 
