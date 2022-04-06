@@ -11,6 +11,13 @@ async function index(req, res) {
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
+  } else if (user && !user.isAdmin) {
+    try {
+      const orders = await Order.findAll({ where: { userId: req.user.sub } }, { nested: true });
+      res.status(202).json(orders);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
   } else {
     res.status(401).json({ message: "Unauthorized" });
   }
@@ -18,12 +25,12 @@ async function index(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
-  const { id } = req.body;
+  const { id } = req.params;
   const user = await User.findOne({ where: { id: req.user.sub } });
+  const order = await Order.findByPk(id, { nested: true });
 
-  if (user.isAdmin) {
+  if (user.isAdmin || (!user.isAdmin && order.userId === user.id)) {
     try {
-      const order = await Order.findByPk(id, { nested: true });
       res.status(202).json(order);
     } catch (error) {
       res.status(400).json({ message: error.message });

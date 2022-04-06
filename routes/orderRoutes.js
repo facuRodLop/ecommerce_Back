@@ -9,7 +9,7 @@ orderRouter.post("/", orderController.store);
 
 orderRouter.get("/", orderController.index);
 
-// orderRouter.get("/:id", orderController.show);
+orderRouter.get("/:id", orderController.show);
 
 orderRouter.patch("/:id", orderController.update);
 
