@@ -54,13 +54,13 @@ module.exports = async () => {
       categoryId: 1,
     },
     {
-      name: "Lithops Salicola",
+      name: "Pleiospilos Nelii",
       description:
-        "This species can be found in Namibia and South Africa at an altitude of 1,000 metres to 1,350 metres. It is generally found in well-drained soil or in rock crevices. It occurs in an area of summer rainfall.",
-      picture: "lithops-salicola.jpg",
-      price: 5.99,
+        "Also called the splitrock or living granite, it is a species of flowering plant native to South Africa. It grows in semi-arid areas with rainfall of between 150mm and 300mm, meaning that in temperate regions it must be grown under glass for protection from excessive rain and hard freezes.",
+      picture: "pleiospilos-nelii.jpg",
+      price: 9.99,
       stock: 80,
-      slug: "lithops-salicola",
+      slug: "pleiospilos-nelii",
       categoryId: 3,
     },
     {
