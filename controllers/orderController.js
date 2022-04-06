@@ -6,7 +6,7 @@ async function index(req, res) {
 
   if (user.isAdmin) {
     try {
-      const orders = await User.findAll({ nested: true });
+      const orders = await Order.findAll({ nested: true });
       res.status(202).json(orders);
     } catch (error) {
       res.status(400).json({ message: error.message });
@@ -23,7 +23,7 @@ async function show(req, res) {
 
   if (user.isAdmin) {
     try {
-      const order = await User.findByPk(id, { nested: true });
+      const order = await Order.findByPk(id, { nested: true });
       res.status(202).json(order);
     } catch (error) {
       res.status(400).json({ message: error.message });
