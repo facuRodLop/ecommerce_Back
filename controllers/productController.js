@@ -45,17 +45,28 @@ async function storeFile(req, res) {
     multiples: true,
     keepExtensions: true,
   });
-  form.parse(req, async (err, fields, files) => {
-    console.log("files", files);
-    const { data, error } = await supabase.storage
-      .from("images")
-      .upload(files.image.newFilename, fs.createReadStream(files.image.filepath), {
-        cacheControl: "3600",
-        upsert: false,
-        contentType: files.image.mimetype,
-      });
-    res.json({ message: files.image.newFilename });
-  });
+  try {
+    form.parse(req, async (err, fields, files) => {
+      const { data, error } = await supabase.storage
+        .from("images")
+        .upload(files.image.newFilename, fs.createReadStream(files.image.filepath), {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: files.image.mimetype,
+        });
+      res.status(200).json({ fileName: files.image.newFilename });
+    });
+  } catch (err) {
+    res.status(400).json({ message: error.message });
+  }
+}
+// remove file with formidable
+async function removeFile(req, res) {
+  console.log("post from remove: ", req.params.image);
+  const supabase = createClient(process.env.DB_BASE_URL, process.env.ANON_KEY);
+  const imageToRemove = req.params.image;
+
+  const { data, error } = await supabase.storage.from("images").remove([imageToRemove]);
 }
 
 // Update the specified resource in storage.
@@ -110,6 +121,7 @@ module.exports = {
   show,
   store,
   storeFile,
+  removeFile,
   update,
   sold,
   destroy,

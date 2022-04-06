@@ -15,6 +15,8 @@ productRouter.post("/", productController.store);
 
 //store files with formidable
 productRouter.post("/images", productController.storeFile);
+//remove file with formidable
+productRouter.delete("/:image", productController.removeFile);
 
 productRouter.patch("/:id", productController.update);
 productRouter.patch("/:id/sold", productController.sold);
