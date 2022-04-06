@@ -93,6 +93,16 @@ module.exports = async () => {
       slug: "caputia-tomentosa",
       categoryId: 3,
     },
+    {
+      name: "Graptopetalum Paraguayense",
+      description:
+        "An elegant plant and a forgiving grower. It is one of the most widely cultivated succulents and has been popular for over a century because it is incredibly easy to grow and shows a wide range of pastel tones. It blushes pink, purple, and yellow in full sun and shows more blues, greens, and silvers in partial shade. Direct sun also causes its powdery coating of farina to thicken, adding to the soft, frosty appearance.",
+      picture: "graptopetalum-paraguayense.png",
+      price: 4.99,
+      stock: 30,
+      slug: "graptopetalum-paraguayense",
+      categoryId: 3,
+    },
   ]);
 
   console.log("[Database] Se corrió el seeder de Products.");
