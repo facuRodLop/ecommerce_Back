@@ -74,24 +74,24 @@ module.exports = async () => {
       categoryId: 2,
     },
     {
-      name: "Actaea Pachypoda",
+      name: "Echeveria Nodulosa",
       description:
-        "The white baneberry or doll's-eyes, is native to eastern North America, in eastern Canada, and the Midwestern and Eastern United States. It prefers clay to coarse loamy upland soils, and is found in hardwood and mixed forest stands.",
-      picture: "actaea-pachypoda.jpg",
+        "Uniquely shaped Echeveria with branching, sprawling stems. Its long, green leaves are heavily lined with deep purple and somewhat keeled. If allowed to sprawl, it can reach about 8.0 ft tall, but it can be kept in a more compact rosette form with regular pruning. It is accustomed to direct sun in its native habitat in the limestone hills of central Mexico. Each spring or summer it can send up a 12.0 ft tall bloom stalk of pink to yellow bell-shaped flowers.",
+      picture: "echeveria-nodulosa.jpg",
       price: 5.99,
-      stock: 20,
-      slug: "actaea-pachypoda",
-      categoryId: 2,
+      stock: 10,
+      slug: "echeveria-nodulosa",
+      categoryId: 3,
     },
     {
-      name: "Orchis Italica",
+      name: "Caputia Tomentosa",
       description:
-        "The naked man orchid or the Italian orchid, is a species of orchid native to the Mediterranean Basin.  It gets its common name from the lobed lip of each flower which mimics the general shape of a naked man. It prefers partial shade and low nutrient soil, and flowers in April.",
-      picture: "orchis-italica.jpg",
-      price: 19.99,
-      stock: 10,
-      slug: "orchis-italica",
-      categoryId: 2,
+        "Woolly Senecio or Cocoon Plant (now Caputia tomentosa): A unique plant with a white, felted covering. This small shrublet has curved, chunky leaves covered with a thick white wool. It rarely blooms but it can produce yellow, pompom-shaped flowers. Over time it can grow tall, leggy stems, but it re-roots readily from stem cuttings.",
+      picture: "caputia-tomentosa-alt.jpg",
+      price: 6.99,
+      stock: 20,
+      slug: "caputia-tomentosa",
+      categoryId: 3,
     },
   ]);
 
