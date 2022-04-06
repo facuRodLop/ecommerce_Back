@@ -75,7 +75,18 @@ async function store(req, res) {
 }
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const user = await User.findOne({ where: { id: req.user.sub } });
+
+  if (user.isAdmin) {
+    await Order.update({ status: req.body.status }, { where: { id: req.params.id } });
+    res.status(206).json({
+      message: "The order was successfully updated",
+    });
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {

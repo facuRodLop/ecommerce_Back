@@ -11,7 +11,7 @@ orderRouter.get("/", orderController.index);
 
 // orderRouter.get("/:id", orderController.show);
 
-// orderRouter.patch("/:id", orderController.update);
+orderRouter.patch("/:id", orderController.update);
 
 // orderRouter.delete("/:id", orderController.destroy);
 // ...
