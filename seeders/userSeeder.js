@@ -14,6 +14,15 @@ module.exports = async () => {
     isAdmin: true,
     phone: faker.phone.phoneNumber(),
   });
+  await User.create({
+    firstname: "User",
+    lastname: "User",
+    email: "user@user.com",
+    password: "user",
+    city: faker.address.city(),
+    address: faker.address.streetAddress(),
+    phone: faker.phone.phoneNumber(),
+  });
   for (let i = 0; i < 10; i++) {
     const firstname = faker.name.firstName();
     const lastname = faker.name.lastName();
@@ -24,7 +33,6 @@ module.exports = async () => {
       password: "1234",
       city: faker.address.city(),
       address: faker.address.streetAddress(),
-      isAdmin: false,
       phone: faker.phone.phoneNumber(),
     };
     await User.create(user);
