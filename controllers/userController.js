@@ -71,7 +71,7 @@ async function update(req, res) {
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  } else if (!user.isAdmin && Number(id) === req.user.sub) {
+  } else if (!user.isAdmin && Number(id) === Number(req.user.sub)) {
     try {
       await User.update({ ...req.body, isAdmin: false }, { where: { id: id } });
       res.status(206).json({
