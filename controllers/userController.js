@@ -23,7 +23,7 @@ async function show(req, res) {
   const user = await User.findOne({ where: { id: req.user.sub } });
   const { id } = req.params;
 
-  if (user.isAdmin || Number(id) === req.user.sub) {
+  if (user.isAdmin || Number(id) === Number(req.user.sub)) {
     try {
       const user = await User.findByPk(id);
       res.status(202).json(user);
