@@ -67,6 +67,7 @@ async function removeFile(req, res) {
   const imageToRemove = req.params.image;
 
   const { data, error } = await supabase.storage.from("images").remove([imageToRemove]);
+  res.status(200).json("File removed");
 }
 
 // Update the specified resource in storage.
