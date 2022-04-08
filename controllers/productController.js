@@ -57,7 +57,7 @@ async function storeFile(req, res) {
       res.status(200).json({ fileName: files.image.newFilename });
     });
   } catch (err) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: err.message });
   }
 }
 // remove file with formidable

@@ -47,21 +47,21 @@ async function store(req, res) {
 
 // Update the specified resource in storage.
 async function update(req, res) {
+  console.log(req.body);
   const user = await User.findOne({ where: { id: req.user.sub } });
   const { id } = req.params;
 
   if (user.isAdmin) {
     try {
-      const newPassword = await bcrypt.hash(req.body.password, 10);
       await User.update(
         {
           firstname: req.body.firstname,
           lastname: req.body.lastname,
           email: req.body.email,
-          password: newPassword,
           city: req.body.city,
           address: req.body.address,
           phone: req.body.phone,
+          isAdmin: req.body.isAdmin,
         },
         { where: { id: id } },
       );
