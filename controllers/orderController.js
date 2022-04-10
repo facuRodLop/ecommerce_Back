@@ -63,7 +63,7 @@ async function store(req, res) {
       }
     }
   }
-  if (subtotal > 200) {
+  if (subtotal < 200) {
     shipping = subtotal * 0.1;
   }
   const total = shipping + subtotal;
